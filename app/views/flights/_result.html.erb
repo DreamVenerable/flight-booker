@@ -1,0 +1,5 @@
+<% @flights.each do |t| %>
+  <ul>
+    <li><%= t[:trip_datetime].strftime("%H:%M") %></li>
+  </ul>
+<% end %>

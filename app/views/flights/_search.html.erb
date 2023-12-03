@@ -1,0 +1,16 @@
+<%= form_with url: '/flights/result', method: 'get' do |f| %>
+  <%= f.label :dep_airport, 'From?' %>
+  <%= f.select :dep_airport, options_for_select(@airport_options) %>
+
+  <%= f.label :arr_airport, 'To?' %>
+  <%= f.select :arr_airport, options_for_select(@airport_options) %>
+
+  <%= f.label :num_of_passengers, 'Passengers' %>
+  <%= f.select :num_of_passengers, options_for_select(1..4) %>
+
+  <%= f.label :datetime, 'Date' %>
+  <%= f.select :datetime, options_for_select(@flight_date) %>
+
+  <%= f.submit 'Search' %>
+<% end %>
+
