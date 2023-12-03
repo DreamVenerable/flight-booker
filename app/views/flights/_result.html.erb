@@ -1,7 +1,5 @@
 <% if !@flights.nil? && @flights.any?  %>
 
-
-
     <% @flights.each do |t| %>
       <ul>
         <li>
@@ -9,10 +7,6 @@
           <%= radio_button(:flight, 'id', t.trip_datetime.strftime("%H:%M")) %>
       </ul>
     <% end %>
-
-
-
-
 
 <% else %>
   <p>No flights available</p>

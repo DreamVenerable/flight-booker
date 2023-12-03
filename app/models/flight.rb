@@ -7,4 +7,5 @@ class Flight < ApplicationRecord
              class_name: 'Airport',
              inverse_of: 'dep_flights'
 
+
 end
