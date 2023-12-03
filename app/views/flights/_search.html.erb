@@ -1,4 +1,5 @@
 <%= form_with url: '/flights', method: 'get' do |f| %>
+
   <%= f.label :dep_airport, 'From?' %>
   <%= f.select :dep_airport, options_for_select(@airport_options, params[:dep_airport]) %>
 
