@@ -1,15 +1,15 @@
-<%= form_with url: '/flights/result', method: 'get' do |f| %>
+<%= form_with url: '/flights', method: 'get' do |f| %>
   <%= f.label :dep_airport, 'From?' %>
-  <%= f.select :dep_airport, options_for_select(@airport_options) %>
+  <%= f.select :dep_airport, options_for_select(@airport_options, params[:dep_airport]) %>
 
   <%= f.label :arr_airport, 'To?' %>
-  <%= f.select :arr_airport, options_for_select(@airport_options) %>
+  <%= f.select :arr_airport, options_for_select(@airport_options, params[:arr_airport]) %>
 
   <%= f.label :num_of_passengers, 'Passengers' %>
-  <%= f.select :num_of_passengers, options_for_select(1..4) %>
+  <%= f.select :num_of_passengers, options_for_select((1..4), params[:num_of_passengers]) %>
 
   <%= f.label :datetime, 'Date' %>
-  <%= f.select :datetime, options_for_select(@flight_date) %>
+  <%= f.select :datetime, options_for_select(@flight_date, params[:datetime]) %>
 
   <%= f.submit 'Search' %>
 <% end %>
