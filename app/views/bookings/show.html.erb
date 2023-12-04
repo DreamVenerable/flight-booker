@@ -1,0 +1,17 @@
+<h2>Flight Details</h2>
+<p>Flight ID: <%= @booking.flight.id %></p>
+<p>Departure Airport: <%= @booking.flight.dep_airport.airport_code %></p>
+<p>Arrival Airport: <%= @booking.flight.arr_airport.airport_code %></p>
+<p>Departure Date: <%= @booking.flight.trip_datetime.strftime("%Y/%m/%d") %></p>
+<p>Departure Time: <%= @booking.flight.trip_datetime.strftime("%H:%M") %></p>
+<p>Number of Passengers: <%= @booking.passengers.count %></p>
+
+<% @booking.passengers.each_with_index do |p, i| %>
+
+      <h3>Passenger <%= i + 1 %></h3>
+        <ul>
+          <li><p>Name: <%= p.name %></p></li>
+          <li><p>Email: <%= p.email %></p></li>
+        </ul>
+
+<% end %>

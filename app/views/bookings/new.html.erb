@@ -1,0 +1,21 @@
+<%= form_for @booking, url: flight_bookings_path(flight_id: @flight.id) do |f| %>
+  <h2>Flight Details</h2>
+  <p>Flight ID: <%= @flight.id %></p>
+  <p>Departure Airport: <%= @flight.dep_airport.airport_code %></p>
+  <p>Arrival Airport: <%= @flight.arr_airport.airport_code %></p>
+  <p>Departure Time: <%= @flight.trip_datetime.strftime("%H:%M") %></p>
+  <p>Number of Passengers: <%= @passenger_count %></p>
+
+  <h2>Passenger Information</h2>
+  <%= f.fields_for :passengers do |passenger_form| %>
+    <div>
+      <p>Passenger</p>
+      <p>Name: <%= passenger_form.text_field :name %></p>
+      <p>Email: <%= passenger_form.email_field :email %></p>
+    </div>
+  <% end %>
+
+  <% f.hidden_field :passenger_count, value: @passenger_count %>
+
+  <%= f.submit 'Book Now' %>
+<% end %>
