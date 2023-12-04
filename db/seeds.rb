@@ -8,8 +8,15 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Booking.destroy_all
 Flight.destroy_all
+Passenger.destroy_all
 Airport.destroy_all
+
+
+passenger1 = Passenger.create(email: 'passenger1@example.com', name: 'John Doe')
+passenger2 = Passenger.create(email: 'passenger2@example.com', name: 'Jane Doe')
+
 
 airports = Airport.create!([
   { airport_code: 'MED' },
@@ -50,3 +57,9 @@ flights = Flight.create!([
   { dep_airport: airports[10], arr_airport: airports[1], trip_datetime: Time.now + 10.days, duration: 16 },
   { dep_airport: airports[10], arr_airport: airports[2], trip_datetime: Time.now + 10.days, duration: 18 }
 ])
+
+
+
+booking = Booking.create(flight: flights[0], passenger_count: 2)
+booking.passengers << passenger1
+booking.passengers << passenger2

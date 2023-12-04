@@ -7,5 +7,6 @@ class Flight < ApplicationRecord
              class_name: 'Airport',
              inverse_of: 'dep_flights'
 
-
+  has_many :bookings
+  has_many :passengers, through: :bookings
 end
