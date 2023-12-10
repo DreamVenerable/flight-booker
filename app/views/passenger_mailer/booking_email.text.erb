@@ -1,0 +1,8 @@
+Here is your flight itinerary,
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Flight Details
+Flight ID: <%= @booking.flight.id %>
+Departure Airport: <%= @booking.flight.dep_airport.airport_code %>
+Arrival Airport: <%= @booking.flight.arr_airport.airport_code %>
+Departure Date: <%= @booking.flight.trip_datetime.strftime("%Y/%m/%d") %>
+Departure Time: <%= @booking.flight.trip_datetime.strftime("%H:%M") %>

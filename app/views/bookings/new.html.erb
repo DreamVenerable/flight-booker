@@ -1,3 +1,5 @@
+<% @booking.passengers.build if @booking.passengers.empty? %>
+
 <%= form_for @booking, url: flight_bookings_path(flight_id: @flight.id) do |f| %>
   <h2>Flight Details</h2>
   <p>Flight ID: <%= @flight.id %></p>
@@ -6,14 +8,33 @@
   <p>Departure Time: <%= @flight.trip_datetime.strftime("%H:%M") %></p>
   <p>Number of Passengers: <%= @passenger_count %></p>
 
-  <h2>Passenger Information</h2>
-  <%= f.fields_for :passengers do |passenger_form| %>
-    <div>
-      <p>Passenger</p>
-      <p>Name: <%= passenger_form.text_field :name %></p>
-      <p>Email: <%= passenger_form.email_field :email %></p>
-    </div>
+
+  <% if @passenger_count < 4 %>
+    <%= link_to 'Add Passenger', new_flight_booking_path(passenger_count: @passenger_count + 1)%>
   <% end %>
+
+  <% if @passenger_count > 1 %>
+    <%= link_to 'Remove Passenger', new_flight_booking_path(passenger_count: @passenger_count - 1)%>
+  <% end %>
+
+  <div data-controller='passenger' >
+
+    <h2>Passenger Information</h2>
+
+    <div data-passenger-target='container'>
+      <%= f.fields_for :passengers do |passenger_form| %>
+        <div data-passenger-target='orgDiv'>
+          <p>Passenger: <%= passenger_form.index + 1 %></p>
+          <p>Name: <%= passenger_form.text_field :name %></p>
+          <p>Email: <%= passenger_form.email_field :email %></p>
+        </div>
+
+      <% end %>
+    </div>
+
+    <%# <button data-action='passenger#add' type='button'> Add passenger</button> %>
+  </div>
+  
 
   <% f.hidden_field :passenger_count, value: @passenger_count %>
 

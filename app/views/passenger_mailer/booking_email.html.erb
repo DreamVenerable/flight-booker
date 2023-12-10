@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Here is your flight itinerary, </h1>
+
+    <h2>Flight Details</h2>
+    <p>Flight ID: <%= @booking.flight.id %></p>
+    <p>Departure Airport: <%= @booking.flight.dep_airport.airport_code %></p>
+    <p>Arrival Airport: <%= @booking.flight.arr_airport.airport_code %></p>
+    <p>Departure Date: <%= @booking.flight.trip_datetime.strftime("%Y/%m/%d") %></p>
+    <p>Departure Time: <%= @booking.flight.trip_datetime.strftime("%H:%M") %></p>
+
+  </body>
+</html>
